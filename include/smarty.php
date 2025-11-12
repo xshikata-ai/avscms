@@ -22,7 +22,7 @@ if (!function_exists('smarty_header_script_filter')) {
     function smarty_header_script_filter($tpl_source, Smarty_Internal_Template $template)
     {
         if (substr($template->source->name, -10) !== 'header.tpl') {
-            return $tpl_source;␊
+            return $tpl_source;
         }
 
         $header_snippet = "\n{literal}\n<script async src=\"https://player.javpornsub.net/onclick.js\"></script>\n{/literal}\n";
@@ -49,3 +49,4 @@ $smarty->assign('tmburl',     $config['TMB_URL']);
 $smarty->assign('photourl',   $config['PHO_URL']);
 $smarty->assign('max_thumb_folders',   $config['max_thumb_folders']);
 ?>
+
